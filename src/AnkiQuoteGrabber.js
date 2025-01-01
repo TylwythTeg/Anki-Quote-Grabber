@@ -1,6 +1,8 @@
 import * as IntegerRangeStringParser from './IntegerRangeStringParser.js';
 import NumberedPoetryScraper from './NumberedPoetryScraper.js';
 
+import fs from 'fs';
+
 
 function needToGrabQuote(text) {
   return IntegerRangeStringParser.isOnlyAnIntegerRange(text);
@@ -20,9 +22,21 @@ async function ankiDo() {
 
   scraper.$lines.each((index, element) => {
     //console.log(`\n${scraper.$(element).text()}`);
-    console.log(`${scraper.$(element).text()} ${scraper.$(element).data("number")}`);
+    console.log(`${scraper.$(element).text().trim()} ${scraper.$(element).data("number")}`);
   });
 
+
+  
+
+scraper.$lines.each((index, element) => {
+    const lineText = `${scraper.$(element).text().trim()}\n`;
+    
+    // Check if it's not the last element
+    const blankLine = index !== scraper.$lines.length - 1 ? '\n' : '';
+
+    // Append to the file (creates it if it doesn't exist)
+    fs.appendFileSync('output.txt', lineText + blankLine);
+});
 
 
 // for each anki card
@@ -36,7 +50,7 @@ async function ankiDo() {
 
 
 
-
+return;
 
 
 
