@@ -42,10 +42,9 @@ scraper.$lines.each((index, element) => {
 // for each anki card
 // check quote
 // if (needToGrabQuote(note.quote)) {}
-// then parse it as either a single line number or linenumber-linenumber
-// check lines.length === 1 or === 2
-// call scraper.get$Lines(...lines)
-// concat strings with quite space, append previous .quote to end
+// then const numberRange = IntegerRangeStringParser.parseIntegerRange(note.quote)
+// const $rangedLines = scraper.get$Lines(...numberRange)
+// `${$rangedLines.each(e=> )}` // idk something to get line1.text().trim() \n line2.text().trim() etc until lastLine.text().trim() space IntegerRangeStringParser.generateStringFromNumbers(...numberRange)
 
 
 
