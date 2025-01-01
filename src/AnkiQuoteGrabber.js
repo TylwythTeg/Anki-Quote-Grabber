@@ -29,7 +29,7 @@ async function ankiDo() {
   
 
 scraper.$lines.each((index, element) => {
-    const lineText = `${scraper.$(element).text().trim()}\n`;
+    const lineText = `${scraper.$(element).text().trim()}`;
     
     // Check if it's not the last element
     const blankLine = index !== scraper.$lines.length - 1 ? '\n' : '';
